@@ -111,19 +111,19 @@ void initializeDefaultLightMaterials(out SLight light)
 	light.Position = vec3(0.0, 2.0, -4.0f);
 	/** MATERIALS **/
 	vec4 lightCoefs = vec4(0.4,0.9,0.0,512.0);
-	materials[0].Color = vec3(0.0, 1.0, 0.0);
+	materials[0].Color = vec3(0.0, 0.0, 1.0);	// задняя
 	materials[0].LightCoeffs = vec4(lightCoefs);
 	materials[0].ReflectionCoef = 0.5;
 	materials[0].RefractionCoef = 1.0;
-	materials[0].MaterialType = DIFFUSE_REFLECTION;
+	materials[0].MaterialType = MIRROR_REFLECTION;
 
-	materials[1].Color = vec3(0.0, 0.0, 1.0);	//материал для шариков
+	materials[1].Color = vec3(1.0, 0.26, 0.26);	//материал для шариков
 	materials[1].LightCoeffs = vec4(lightCoefs);
 	materials[1].ReflectionCoef = 0.5;
 	materials[1].RefractionCoef = 1.0;
 	materials[1].MaterialType = MIRROR_REFLECTION;
-
-	materials[2].Color = vec3(1.0, 0.0, 0.0);
+	
+	materials[2].Color = vec3(0.0, 0.0, 0.3);	// остальные
 	materials[2].LightCoeffs = vec4(lightCoefs);
 	materials[2].ReflectionCoef = 0.5;
 	materials[2].RefractionCoef = 1.0;
@@ -156,12 +156,12 @@ void initializeDefaultScene()
 	triangles[0].v1 = vec3(-5.0,-5.0,-5.0);
 	triangles[0].v2 = vec3(-5.0, 5.0, 5.0);
 	triangles[0].v3 = vec3(-5.0, 5.0,-5.0);
-	triangles[0].MaterialIdx = 0;
+	triangles[0].MaterialIdx = 2;
 	triangles[1].v1 = vec3(-5.0,-5.0,-5.0);
 	triangles[1].v2 = vec3(-5.0,-5.0, 5.0);
 	triangles[1].v3 = vec3(-5.0, 5.0, 5.0);
-	triangles[1].MaterialIdx = 0;
-
+	triangles[1].MaterialIdx = 2;
+	/* back wall */
 	triangles[2].v1 = vec3(-5.0,-5.0, 5.0);
 	triangles[2].v2 = vec3( 5.0,-5.0, 5.0);
 	triangles[2].v3 = vec3(-5.0, 5.0, 5.0);
@@ -170,36 +170,33 @@ void initializeDefaultScene()
 	triangles[3].v2 = vec3(-5.0, 5.0, 5.0);
 	triangles[3].v3 = vec3( 5.0,-5.0, 5.0);
 	triangles[3].MaterialIdx = 2;
-	
 	/*right wall */ 
 	triangles[4].v1 = vec3(5.0, 5.0, 5.0); 
 	triangles[4].v2 = vec3(5.0, -5.0, 5.0); 
 	triangles[4].v3 = vec3(5.0, 5.0, -5.0); 
-	triangles[4].MaterialIdx = 3; 
+	triangles[4].MaterialIdx = 2; 
 	triangles[5].v1 = vec3(5.0, 5.0, -5.0); 
 	triangles[5].v2 = vec3(5.0, -5.0, 5.0); 
 	triangles[5].v3 = vec3(5.0, -5.0, -5.0); 
-	triangles[5].MaterialIdx = 3; 
-
+	triangles[5].MaterialIdx = 2; 
 	/*down wall */ 
 	triangles[6].v1 = vec3(-5.0,-5.0, 5.0); 
 	triangles[6].v2 = vec3(-5.0,-5.0,-5.0); 
 	triangles[6].v3 = vec3( 5.0,-5.0, 5.0); 
-	triangles[6].MaterialIdx = 4; 
+	triangles[6].MaterialIdx = 2; 
 	triangles[7].v1 = vec3(5.0, -5.0, -5.0); 
 	triangles[7].v2 = vec3(5.0,-5.0, 5.0); 
 	triangles[7].v3 = vec3(-5.0,-5.0,-5.0); 
-	triangles[7].MaterialIdx = 4; 
-
+	triangles[7].MaterialIdx = 2; 
 	/*up wall */ 
 	triangles[8].v1 = vec3(-5.0, 5.0,-5.0); 
 	triangles[8].v2 = vec3(-5.0, 5.0, 5.0); 
 	triangles[8].v3 = vec3( 5.0, 5.0, 5.0); 
-	triangles[8].MaterialIdx = 5; 
+	triangles[8].MaterialIdx = 2; 
 	triangles[9].v1 = vec3(-5.0, 5.0, -5.0); 
 	triangles[9].v2 = vec3( 5.0, 5.0, 5.0); 
 	triangles[9].v3 = vec3(5.0, 5.0, -5.0); 
-	triangles[9].MaterialIdx = 5; 
+	triangles[9].MaterialIdx = 2; 
 
 	/*front wall*/ 
 	triangles[10].v1 = vec3(-5.0,-5.0, -5.0); 
